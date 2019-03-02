@@ -43,7 +43,7 @@ public class Tema {
 	public void addTema(Connection connection, String texto, int idtweet) {
 		
 		// Declaration of variables
-		Pattern p = Pattern.compile("(\\s#[a-zA-ZÀ-ÿ0-9]+)");
+		Pattern p = Pattern.compile("(#[a-zA-ZÀ-ÿ0-9]+)");
 		Matcher m = p.matcher(texto);
 		PreparedStatement ps;
 		

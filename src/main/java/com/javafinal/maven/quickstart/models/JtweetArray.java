@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class JtweetArray {
 	private ArrayList<Jtweet> jtweets = new ArrayList<Jtweet>();
@@ -99,8 +97,6 @@ public class JtweetArray {
 		// Declaration of variables
 		boolean success = false;
 		String text;
-		Pattern p;
-		Matcher m = null;
 		
 		System.out.println("Ingrese las palabras que quiere buscar : ");
 		
@@ -109,14 +105,11 @@ public class JtweetArray {
 			try {
 				
 				text = br.readLine();
-				p = Pattern.compile(text);
 				
 				for(Jtweet j : this.getJtweetArray()) {
 					
-					m = p.matcher(j.getTexto());
-					
 					// this will print jtweets if matches are found
-					if(m.matches()) {
+					if(j.getTexto().contains(text)) {
 						System.out.println(j.toString());
 					}
 				}
@@ -154,18 +147,19 @@ public class JtweetArray {
 				// searchs through temas
 				for(Tema t : temas.getTemaArray()) {
 				
-					if(t.getTema().equalsIgnoreCase(tema)) {
+					if(t.getTema().contains(tema)) {
 					
 						// if founded, will search idtweet to print jtweet with same tema.
 						for(Jtweet j : this.getJtweetArray()) {
 						
 							if(t.getIdtweet() == j.getIdtweet()) {
 								System.out.println(j.toString());
+								break;
 							}
-							break;
 						}
 					}
 				}
+				success = true;
 			} catch(IOException e) {
 				System.out.println("Hubo un problema al leer el tema ingresado, intente nuevamente.");
 			}

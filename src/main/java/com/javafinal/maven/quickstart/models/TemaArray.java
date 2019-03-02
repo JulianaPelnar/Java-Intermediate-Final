@@ -23,18 +23,19 @@ public class TemaArray {
 		try {
 		
 			Statement st = connection.createStatement();
-			ResultSet rs = st.executeQuery("SELECT * FROM temas");
+			ResultSet rs = st.executeQuery("SELECT * FROM jtweet.temas");
 			
 			while(rs.next()) {
 			
 				Tema t = new Tema();
-				t.setTema(rs.getString("temas"));
+				t.setTema(rs.getString("tema"));
 				t.setIdtweet(rs.getInt("idtweet"));
 				this.temas.add(t);
 			
 			}
 		} catch(SQLException e) {
 			System.out.println("Hubo un problema al crear la lista de temas.");
+			//e.printStackTrace();
 		}
 	}
 	
