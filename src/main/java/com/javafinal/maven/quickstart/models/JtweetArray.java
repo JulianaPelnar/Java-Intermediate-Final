@@ -14,8 +14,8 @@ public class JtweetArray {
 	private ArrayList<Jtweet> jtweets = new ArrayList<Jtweet>();
 	
 	/**
-	 * This method will return all Temas founded on database whenever a new TemaArray object is created. 
-	 * The result will be an array of temas, so they should be treated as an ArrayList.
+	 * This method will return all Jtweets founded on database whenever a new JtweetsArray object is created. 
+	 * The result will be an array of jtweets, so they should be treated as an ArrayList.
 	 * 
 	 * @param connection (Connection object, it will be the same throughout the program)
 	 */
@@ -30,8 +30,8 @@ public class JtweetArray {
 			
 				Jtweet j = new Jtweet();
 				j.setIdtweet(rs.getInt("idtweet"));
-				j.setNombreusuario(rs.getString(2));
-				j.setTexto(rs.getString(3));
+				j.setNombreusuario(rs.getString("nombreusuario"));
+				j.setTexto(rs.getString("texto"));
 				this.jtweets.add(j);
 			
 			}
@@ -43,12 +43,12 @@ public class JtweetArray {
 	}
 	
 	//  GETTERS
-	public ArrayList<Jtweet> getJteetArray() {
+	public ArrayList<Jtweet> getJtweetArray() {
 		return this.jtweets;
 	}
 	
 	//  SETTERS
-	public void setJteetArray(ArrayList<Jtweet> ja) {
+	public void setJtweetArray(ArrayList<Jtweet> ja) {
 		this.jtweets = ja;
 	}
 	
@@ -73,7 +73,7 @@ public class JtweetArray {
 			try {
 				nombreusuario = br.readLine();
 				
-				for(Jtweet j : this.getJteetArray()) {
+				for(Jtweet j : this.getJtweetArray()) {
 					
 					// this will print jtweets by user name
 					if(j.getNombreusuario().equals(nombreusuario)) {
@@ -111,7 +111,7 @@ public class JtweetArray {
 				text = br.readLine();
 				p = Pattern.compile(text);
 				
-				for(Jtweet j : this.getJteetArray()) {
+				for(Jtweet j : this.getJtweetArray()) {
 					
 					m = p.matcher(j.getTexto());
 					
@@ -157,7 +157,7 @@ public class JtweetArray {
 					if(t.getTema().equalsIgnoreCase(tema)) {
 					
 						// if founded, will search idtweet to print jtweet with same tema.
-						for(Jtweet j : this.getJteetArray()) {
+						for(Jtweet j : this.getJtweetArray()) {
 						
 							if(t.getIdtweet() == j.getIdtweet()) {
 								System.out.println(j.toString());

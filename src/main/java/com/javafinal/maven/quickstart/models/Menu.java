@@ -276,6 +276,7 @@ public class Menu{
 						case 1 :
 							nombreusuario = usuario.getNombreusuario();
 							jtweet.addJTweetAndTema(nombreusuario, connection, br);
+							jtweets = new JtweetArray(connection);
 							break;
 						case 2 :
 							jtweets.sortByUserName(br);
@@ -287,7 +288,9 @@ public class Menu{
 							jtweets.sortByTema(br, temas);
 							break;
 						case 5 :
-							System.out.println("En breve.");
+							//System.out.println("En breve.");
+							RealTimeThread thread = new RealTimeThread(connection);
+							thread.start();
 							break;
 						case 6 :
 							continue;
