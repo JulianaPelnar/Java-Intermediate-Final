@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 public class Menu{
 	
 	/**
+	 * Teticas
+	 *
 	 * Each time a "yes/no" decision is made, this method
 	 * will return true (yes) or false (no)
 	 * 
